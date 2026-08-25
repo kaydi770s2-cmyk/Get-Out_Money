@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>โปรแกรมบัญชีรายรับ - รายจ่าย</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header มาสคอตอนิเมะผู้ชายเท่ๆ -->
+    <div class="header">
+      <div class="anime-mascot">
+        <svg viewBox="0 0 120 120" width="110" height="110">
+          <!-- ผมทรงอนิเมะผู้ชายซอยสไลด์ (สีเทาดำเข้ม) -->
+          <path d="M 15 55 Q 20 15 60 12 Q 100 15 105 55 Q 95 30 60 25 Q 25 30 15 55 Z" fill="#2d3748"/>
+          <!-- โครงหน้าคมเข้ม -->
+          <path d="M 32 45 L 32 70 L 60 98 L 88 70 L 88 45 Z" fill="#f7fafc"/>
+          <!-- ผมหน้าม้าสไลด์ด้านหน้า -->
+          <path d="M 22 45 Q 40 20 52 48 Q 60 25 68 45 Q 80 20 98 45 Q 75 30 60 38 Q 45 30 22 45 Z" fill="#1a202c"/>
+          <!-- ตาอนิเมะผู้ชายทรงคม (สีฟ้าไซเบอร์) -->
+          <polygon points="40,56 52,58 42,65" fill="#3182ce"/>
+          <polygon points="80,56 68,58 78,65" fill="#3182ce"/>
+          <!-- ประกายตา -->
+          <circle cx="46" cy="60" r="1.5" fill="#ffffff"/>
+          <circle cx="74" cy="60" r="1.5" fill="#ffffff"/>
+          <!-- คิ้วเข้มทรงเฉียง -->
+          <polygon points="36,50 54,53 52,50" fill="#1a202c"/>
+          <polygon points="84,50 66,53 68,50" fill="#1a202c"/>
+          <!-- ปากอมยิ้มเท่ๆ -->
+          <path d="M 54 80 Q 62 83 66 78" stroke="#2d3748" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- ต่างหูเงินห้อย -->
+          <rect x="30" y="68" width="3" height="10" rx="1.5" fill="#cbd5e0"/>
+        </svg>
+      </div>
+      <h2>FINANCE TRACKER ⚡</h2>
+    </div>
+
+    <!-- สรุปยอดเงิน (การ์ดน้ำเงินเข้มสุดเท่) -->
+    <div class="card balance-card">
+      <h4>ยอดเงินคงเหลือสุทธิ</h4>
+      <h1 id="balance">฿0.00</h1>
+      <div class="income-expense-container">
+        <div class="inc-box">
+          <span>รายรับ 📈</span>
+          <p id="money-plus" class="money plus">+฿0.00</p>
+        </div>
+        <div class="exp-box">
+          <span>รายจ่าย 📉</span>
+          <p id="money-minus" class="money minus">-฿0.00</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ฟอร์มเพิ่มรายการ -->
+    <div class="card">
+      <h3>⚡ เพิ่มรายการใหม่</h3>
+      <form id="form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>ประเภท</label>
+            <select id="type">
+              <option value="income">รายรับ 💰</option>
+              <option value="expense">รายจ่าย 💸</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>หมวดหมู่</label>
+            <select id="category">
+              <option value="🍔 อาหาร">🍔 อาหาร</option>
+              <option value="🚗 เดินทาง">🚗 เดินทาง</option>
+              <option value="🛍️ ช้อปปิ้ง">🛍️ ช้อปปิ้ง</option>
+              <option value="💰 เงินเดือน">💰 เงินเดือน</option>
+              <option value="📌 อื่นๆ">📌 อื่นๆ</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>ชื่อรายการ</label>
+          <input type="text" id="text" placeholder="ระบุชื่อรายการ..." required>
+        </div>
+
+        <div class="form-group">
+          <label>จำนวนเงิน (บาท)</label>
+          <input type="number" id="amount" step="0.01" placeholder="0.00" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">+ บันทึกรายการ</button>
+      </form>
+    </div>
+
+    <!-- ประวัติรายการ -->
+    <div class="card">
+      <h3>📊 ประวัติรายการ</h3>
+      <div class="form-group">
+        <input type="text" id="search-input" placeholder="🔍 ค้นหารายการ (Real-time)...">
+      </div>
+      <ul id="list" class="list"></ul>
+        <button type="button" id="clear-all-btn" class="btn btn-danger" onclick="clearAllData()">ล้างข้อมูลทั้งหมด</button> 
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
